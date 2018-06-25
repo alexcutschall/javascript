@@ -1,6 +1,6 @@
 const getUserChoice = (userInput) => {
   userInput = userInput.toLowerCase();
-  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb') {
 	  return userInput;
 	} else {
     console.log("Error. Wrong Type");
@@ -14,6 +14,10 @@ const getComputerChoice = () => {
 };
 
 const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === 'bomb') {
+    console.log("BAM! YOU WIN!");
+  }
+
   if (userChoice === computerChoice) {
     console.log("The game was tied");
   }
@@ -44,6 +48,10 @@ const determineWinner = (userChoice, computerChoice) => {
 console.log(`Your guess was ${userChoice} and the computer's was ${computerChoice}.`)
 };
 
-console.log(determineWinner(getUserChoice("paper"), getComputerChoice()));
-console.log(determineWinner(getUserChoice("rock"), getComputerChoice()));
-console.log(determineWinner(getUserChoice("scissors"), getComputerChoice()));
+const playGame = () => {
+  userChoice = getUserChoice('bomb');
+  computerChoice = getComputerChoice();
+  console.log(determineWinner(userChoice, computerChoice));
+};
+
+playGame();
